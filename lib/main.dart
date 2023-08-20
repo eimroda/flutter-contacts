@@ -27,25 +27,22 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  String url = 'http://localhost/contacts/api/user.php';
+  String url = 'http://localhost/coc/contacts/api/user.php';
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
   Future<void> login() async {
+    //define jsonData
     Map<String, String> jsonData = {
       'username': _usernameController.text,
       'password': _passwordController.text
     };
-    Map<String, String> formData = {
-      'json': jsonEncode(jsonData),
-      'operation': 'login'
-    };
 
-    var response = await http.post(
-      Uri.parse(url),
-      body: formData,
-    );
-    print(response.body);
+    Map<String, String> requestBody = {
+      'operation': 'login',
+      'json': jsonEncode(jsonData)
+    };
+    var response = await http.post(Uri.parse(url), body: requestBody);
     if (response.body != '0') {
       Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => Mainpage()),
@@ -53,7 +50,7 @@ class HomePageState extends State<HomePage> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Invalid Username or password. Please try again!"),
+          content: Text("Invalid username or password, please try again!"),
         ),
       );
     }
@@ -69,7 +66,7 @@ class HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Buck Fan Club',
+              'My Contacts Database',
               style: TextStyle(fontSize: 20, color: Colors.blue),
             ),
             SizedBox(

@@ -11,7 +11,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  String url = "http://localhost/contacts/api/user.php";
+  String url = "http://localhost/coc/contacts/api/user.php";
   TextEditingController _fullNameCntrl = TextEditingController();
   TextEditingController _usernameCntrl = TextEditingController();
   TextEditingController _passwordCntrl = TextEditingController();
@@ -58,14 +58,13 @@ class _RegisterState extends State<Register> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "Buck Fan Club Registration",
+              "My Contacts Database",
               style: TextStyle(color: Colors.red, fontSize: 20),
             ),
             SizedBox(
               height: 20,
             ),
             TextFormField(
-              controller: _fullNameCntrl,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0)),
@@ -78,7 +77,6 @@ class _RegisterState extends State<Register> {
               height: 20,
             ),
             TextFormField(
-              controller: _usernameCntrl,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0)),
@@ -92,7 +90,6 @@ class _RegisterState extends State<Register> {
             ),
             TextFormField(
               obscureText: true,
-              controller: _passwordCntrl,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0)),
